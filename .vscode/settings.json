@@ -1,0 +1,11 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  // "files.associations": {
+  //   "*.css": "tailwindcss"
+  // }
+  "files.associations": {"*.scss": "postcss", "*.module.scss": "postcss"},
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+
+}
