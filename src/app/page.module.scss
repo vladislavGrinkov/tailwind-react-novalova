@@ -22,14 +22,17 @@
     animation: AnimationName 6s cubic-bezier(0.4, 0.6, 0.8, 1) infinite;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
+.scrollbarHide::-webkit-scrollbar {
     display: none;
 }
 
 /* For IE, Edge and Firefox */
-.scrollbar-hide {
+.scrollbarHide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
 }
 
 @keyframes AnimationName {

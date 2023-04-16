@@ -21,7 +21,7 @@ export const TemplateQuestions = ({
       <div>
         <h3 className={cn(styles.lb)}>{title}</h3>
       </div>
-      <div className="overflow-scroll h-full w-full scrollbar-hide">
+      <div className={cn(styles.scrollbarHide)}>
         <div className="w-full flex items-center justify-center flex-col gap-3">
           {listQuestions?.map((item, index) => (
             <button
