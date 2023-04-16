@@ -22,6 +22,16 @@
     animation: AnimationName 6s cubic-bezier(0.4, 0.6, 0.8, 1) infinite;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 @keyframes AnimationName {
     0%,
     100% {
