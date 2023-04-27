@@ -68,7 +68,7 @@ export default function IntroPage() {
                 <button
                   type="button"
                   onClick={singInMeta}
-                  className="duration-75 hover:bg-white hover:text-indigo-500 text-white border border-white rounded-full text-2xl px-14 py-2.5 text-center font-medium tracking-wider"
+                  className="duration-75 mt-10 hover:bg-white hover:text-indigo-500 text-white border border-white rounded-full text-2xl px-14 py-2.5 text-center font-medium tracking-wider"
                 >
                   войти
                 </button>

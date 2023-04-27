@@ -41,14 +41,14 @@ export const useContentState = ({limit = 0}: {limit: number}): ISend => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 4000);
   };
 
   useEffect(() => {
     if (content <= limit) {
       setTimeout(() => {
         setContent(content + 1);
-      }, 4000);
+      }, 3000);
     }
   }, [content]);
 

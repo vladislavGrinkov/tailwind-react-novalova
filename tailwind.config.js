@@ -10,10 +10,10 @@ module.exports = {
         body: ['Jost']
       },
       animation: {
-        wiggle: 'wiggle 3s',
-        wiggle2: 'wiggle2 3s',
-        wiggle3: 'wiggle3 3s',
-        wiggle4: 'wiggle4 3s',
+        wiggle: 'wiggle 4s',
+        wiggle2: 'wiggle2 4s',
+        wiggle3: 'wiggle3 4s',
+        wiggle4: 'wiggle4 4s',
       },
       keyframes: {
         wiggle: {

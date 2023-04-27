@@ -14,7 +14,7 @@ export const TemplateQuestions = ({
   if (isMatch) return <FoundProfile />
 
   return (
-    <div className="w-full h-1/2 flex items-center justify-center flex-col gap-5">
+    <div className="w-full h-4/5 flex items-center justify-center flex-col gap-5">
       <div>
         <h3 className="text-white tracking-wider">Вопрос {id}/21</h3>
       </div>
