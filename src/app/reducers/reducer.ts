@@ -34,6 +34,6 @@ export const profileSlice = createSlice({
   },
 });
 
-export const profileActions = profileSlice.actions;
 export const profileReducer = profileSlice.reducer;
+export const profileActions = profileSlice.actions;
 export const { saveProfile, resetProfile } = profileActions;

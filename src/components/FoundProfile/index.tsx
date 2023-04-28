@@ -4,12 +4,13 @@ import cn from 'classnames';
 import styles from '../../app/page.module.scss';
 import { useTypedSelector } from '../../app/reducers/useTypedSelector';
 import { shallowEqual } from 'react-redux';
+import { TypeRootState } from '@/app/init/store';
 
 export const FoundProfile = () => {
   const { onChangeContent, isLoading } = useContentState({ limit: 0 });
   const router = useRouter();
   const { user } = useTypedSelector(
-    state => state.profileReducer,
+    (state: TypeRootState) => state.profileReducer,
     shallowEqual
   );
   const {images} = user;

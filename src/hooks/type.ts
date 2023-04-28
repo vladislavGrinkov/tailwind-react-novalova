@@ -1,4 +1,6 @@
-export type TData = TInnerData;
+export type TData = {
+    user: TInnerData
+};
 
 
 export type TInnerData = {

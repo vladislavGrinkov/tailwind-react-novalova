@@ -4,11 +4,12 @@ import { TInnerData } from '@/hooks/type';
 import profiles from '../app/data/profiles.json';
 import { useActions } from '../app/reducers/useActions';
 import { useEffect } from 'react';
+import { TypeRootState } from '@/app/init/store';
 
 export const useFetchProfile = (): TSendParam  => {
     const {resetProfile, saveProfile} = useActions();
   const { user } = useTypedSelector(
-    state => state.profileReducer,
+    (state: TypeRootState) => state.profileReducer,
     shallowEqual
   );
 

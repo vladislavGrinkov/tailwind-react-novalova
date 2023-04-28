@@ -2,6 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import logger from 'redux-logger';
+import { profileSlice } from '../reducers/reducer';
 
 // Instrument
 import { rootReducer } from './rootReducer';

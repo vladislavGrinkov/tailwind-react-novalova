@@ -1,24 +1,28 @@
 'use client';
 import Image from 'next/image';
 import Logo from '../../../public/prof_logo.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContentState } from '../../hooks/useContent';
 import { useTypedSelector } from '../reducers/useTypedSelector';
 import { shallowEqual } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import { TypeRootState } from '../init/store';
 
 export default function Second() {
   const [isOpen, setOpen] = useState(false);
   const router = useRouter();
   const { setContent, comebackToStart } = useContentState({ limit: 0 });
   const { user } = useTypedSelector(
-    state => state.profileReducer,
+    (state: TypeRootState) => state.profileReducer,
     shallowEqual
   );
   const { images, age, about, location, name } = user;
 
+  useEffect(() => {
+    if (!name)router.push('/polling/questions');
+  }, [])
+
   if (!name) {
-    router.push('/polling/questions');
     return <div>loading...</div>
   }
 
