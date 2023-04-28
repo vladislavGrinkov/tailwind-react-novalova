@@ -3,12 +3,27 @@ import Image from 'next/image';
 import Logo from '../../../public/prof_logo.png';
 import { useState } from 'react';
 import { useContentState } from '../../hooks/useContent';
+import { useTypedSelector } from '../reducers/useTypedSelector';
+import { shallowEqual } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 export default function Second() {
   const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
   const { setContent, comebackToStart } = useContentState({ limit: 0 });
+  const { user } = useTypedSelector(
+    state => state.profileReducer,
+    shallowEqual
+  );
+  const { images, age, about, location, name } = user;
+
+  if (!name) {
+    router.push('/polling/questions');
+    return <div>loading...</div>
+  }
+
   return (
-    <div className="flex h-screen flex-col gap-5 bg-fuchsia-100">
+    <div className="flex max-h-full min-h-screen  flex-col gap-5 bg-fuchsia-100">
       <nav className=" border-gray-200 px-4 lg:px-6 py-2.5 bg-white w-full ">
         <div className="flex flex-wrap justify-between items-center mx-auto w-full">
           <a className="flex items-center">
@@ -23,21 +38,21 @@ export default function Second() {
             </div>
           </a>
           <div className="flex items-center lg:order-2">
-          <button
-          type="button"
-          onClick={() => {
-            setContent(0);
-            comebackToStart();
-          }}
-          className="duration-75 mr-3 hover:bg-fuchsia-400 hover:text-white text-fuchsia-400  border border-fuchsia-400 rounded-full text-1xl px-3 py-1.5 text-center font-medium tracking-wider"
-        >
-          выйти
-        </button>
             <img
               className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-              src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src={images[0]}
               alt=""
             />
+            <button
+              type="button"
+              onClick={() => {
+                setContent(0);
+                comebackToStart();
+              }}
+              className="duration-75 ml-3 hover:bg-fuchsia-400 hover:text-white text-fuchsia-400  border border-fuchsia-400 rounded-full text-l px-3 py-1.5 text-center tracking-wider"
+            >
+              выйти
+            </button>
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
@@ -50,85 +65,38 @@ export default function Second() {
       <main className="h-full w-full flex flex-col sm:flex-row flex-grow gap-4 px-5">
         <div className="flex-1 flex flex-col gap-3">
           <div className="shadow rounded-md h-auto flex flex-col gap-2 p-5 bg-white">
-            <div>Игорь, 26</div>
+            <div>
+              {name}, {age}
+            </div>
             <div className="flex flex-row justify-between">
-              <div>Москва, Россия</div>
+              <div>{location}</div>
               <div>Нравится</div>
             </div>
           </div>
           <div className="shadow rounded-md h-auto flex flex-col gap-4 p-5 bg-white">
             <div>О себе</div>
-            <div>
-              «Я ответственный, проактивный, стрессоустойчивый,
-              коммуникабельный, честный. Мои сильные стороны — хорошие
-              управленческие и лидерские навыки, клиентоориентированность,
-              системное мышление, позитивный настрой. Не пью, не курю, есть
-              права категории B».
-            </div>
+            <div>{about}</div>
           </div>
 
           <div className="flex flex-wrap w-full justify-start items-start">
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                />
+            {images.map((path, index) => (
+              <div key={path + index} className="flex w-1/4 flex-wrap">
+                <div className="w-full p-1 md:p-2">
+                  <img
+                    alt="gallery"
+                    className="block h-full w-full rounded-lg object-cover object-center"
+                    src={path}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp"
-                />
-              </div>
-            </div>
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
-                />
-              </div>
-            </div>
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp"
-                />
-              </div>
-            </div>
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(76).webp"
-                />
-              </div>
-            </div>
-            <div className="flex w-1/4 flex-wrap">
-              <div className="w-full p-1 md:p-2">
-                <img
-                  alt="gallery"
-                  className="block h-full w-full rounded-lg object-cover object-center"
-                  src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(72).webp"
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="order-first sm:w-60 flex flex-col gap-3 sticky">
           <div className="flex items-center justify-center">
             <img
               className="h-23 w-23 rounded-full ring-2 ring-white"
-              src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src={images[0]}
               alt=""
             />
           </div>
@@ -139,11 +107,9 @@ export default function Second() {
           >
             написать
           </button>
-          
         </div>
       </main>
 
-      {/* modal */}
       {isOpen && (
         <div
           aria-hidden="true"
@@ -182,14 +148,13 @@ export default function Second() {
                   Отсканируйте QR-код на телефоне и перейдите по ссылке!
                 </p>
                 <div className="flex items-center justify-center">
-                  <div className='bg-white w-1/3'>
-                  <img
-                    height={300}
-                    width={300}
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                  />
+                  <div className="bg-white w-1/3">
+                    <img
+                      height={300}
+                      width={300}
+                      src="qr_code.jpg"
+                    />
                   </div>
-                 
                 </div>
               </div>
             </div>

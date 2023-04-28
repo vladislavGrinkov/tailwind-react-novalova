@@ -1,6 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
+import profiles from '../app/data/profiles.json';
+import { TData } from './type';
+
 
 
 export const useContentState = ({limit = 0}: {limit: number}): ISend => {

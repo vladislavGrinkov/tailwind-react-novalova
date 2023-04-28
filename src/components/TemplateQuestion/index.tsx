@@ -2,6 +2,7 @@ import cn from 'classnames';
 import styles from '../../app/page.module.scss';
 import { useState } from 'react';
 import { FoundProfile } from '../FoundProfile';
+import { useFetchProfile } from '@/hooks/useFetchProfile';
 
 export const TemplateQuestions = ({
   onNextHandler,
@@ -10,6 +11,7 @@ export const TemplateQuestions = ({
   id,
 }: TProps) => {
   const [isMatch, setMatch] = useState(false);
+  const {getRandomProfile} = useFetchProfile()
 
   if (isMatch) return <FoundProfile />
 
@@ -30,6 +32,10 @@ export const TemplateQuestions = ({
               onClick={() => {
                 if(id === 21) {
                   setMatch(true);
+                  const sex = item === 'женщину' ? 'жен' : 'муж'
+                  console.log(sex);
+                  getRandomProfile(sex);
+                  console.log(item);
                 }
                 onNextHandler(id + 1);
               }}

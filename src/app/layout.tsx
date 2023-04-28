@@ -1,10 +1,8 @@
+'use client'
 import './globals.css';
 import { Open_Sans } from '@next/font/google';
-
-export const metadata = {
-  title: 'NOVALOVA',
-  description: 'Find love',
-};
+import { Provider } from 'react-redux';
+import store from './init/store';
 
 const roboto = Open_Sans({
   subsets: ['latin'],
@@ -18,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+       <body className={roboto.className}>
+        <Provider store={store}>
+         {children}
+        </Provider>
+       </body>
     </html>
   );
 }

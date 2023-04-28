@@ -13,6 +13,7 @@ export const ContentAutoSlider = () => {
     goToIntro,
   } = useContentState({limit: 0});
 
+
   return (
     <WrapperAnimate
       onNextHandler={onNextHandler}
@@ -21,7 +22,7 @@ export const ContentAutoSlider = () => {
       comebackToStart={comebackToStart}
     >
       <div className="flex-col items-center justify-center ">
-        <Image src={'main_logo.svg'} height={300} width={300} alt="Logo" />
+        <img src={'/main_logo.svg'} height={300} width={300} alt="Logo" />
         <div className='flex items-center justify-center'><ButtonComponent text={'начать'} fn={goToIntro}/></div>
       </div>
     </WrapperAnimate>

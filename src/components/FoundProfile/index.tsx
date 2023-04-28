@@ -2,10 +2,18 @@ import { useContentState } from '@/hooks/useContent';
 import { useRouter } from 'next/navigation';
 import cn from 'classnames';
 import styles from '../../app/page.module.scss';
+import { useTypedSelector } from '../../app/reducers/useTypedSelector';
+import { shallowEqual } from 'react-redux';
 
 export const FoundProfile = () => {
   const { onChangeContent, isLoading } = useContentState({ limit: 0 });
   const router = useRouter();
+  const { user } = useTypedSelector(
+    state => state.profileReducer,
+    shallowEqual
+  );
+  const {images} = user;
+
 
   return (
     <div className="animate-wiggle4 w-full  h-screen flex items-center justify-center flex-col gap-5">
@@ -36,8 +44,9 @@ export const FoundProfile = () => {
         </div>
         <img
           className="inline-block h-30 w-30 rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt=""
+          src={images[0]}
+          width={300}
+          alt="avatar"
         />
         <div className="absolute left-96 bottom-0 ">
           <svg

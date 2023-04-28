@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ButtonComponent } from './button';
+import { useActions } from '../app/reducers/useActions';
 
 export const WrapperAnimate: FC<TProps> = ({
   isComeback,
@@ -8,6 +8,7 @@ export const WrapperAnimate: FC<TProps> = ({
   comebackToStart,
   setContent,
 }) => {
+  const {resetProfile} = useActions();
   return (
     <div>
       <div
@@ -23,6 +24,7 @@ export const WrapperAnimate: FC<TProps> = ({
             onClick={() => {
                 setContent(0)
                 comebackToStart();
+                resetProfile();
             }}
             className="duration-75 hover:bg-white hover:text-indigo-500 text-white border border-white rounded-full text-1xl px-6 py-2.5 text-center font-medium tracking-wider"
           >
