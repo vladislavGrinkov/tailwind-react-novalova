@@ -156,7 +156,7 @@ export default function Second() {
                     <img
                       height={300}
                       width={300}
-                      src="qr_code.jpg"
+                      src="/qr_code.jpg"
                     />
                   </div>
                 </div>
