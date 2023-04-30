@@ -42,10 +42,12 @@ export default function Second() {
             </div>
           </a>
           <div className="flex items-center lg:order-2">
-            <div className="relative w-10 h-10 overflow-hidden bg-fuchsia-400 rounded-full dark:bg-fuchsia-400">
+            <div className="h-full">
               <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                src={'/avatar.png'}
+                className="h-full"
+                src={'/avatar_3.png'}
+                height="100"
+                width="50"
                 alt="avatar"
               />
             </div>
