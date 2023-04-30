@@ -105,7 +105,7 @@ export const data = [
     id: 14,
     isDone: false,
     name: 'Собаки или кошки?',
-    listQuestions: ['Собаки', 'кошки'],
+    listQuestions: ['собаки', 'кошки'],
   },
   {
     id: 15,

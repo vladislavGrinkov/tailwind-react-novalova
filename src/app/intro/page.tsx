@@ -43,7 +43,7 @@ export default function IntroPage() {
           >
             <h3 className={cn(styles.lb)}>
               Сегодня вы наконец-то
-              <br /> <h3>найдете свою любовь !</h3>
+              <br /> <p className={cn(styles.name)}>найдете свою любовь !</p>
             </h3>
           </WrapperAnimate>
         </div>
