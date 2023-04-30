@@ -45,8 +45,8 @@ export default function Second() {
             <div className="relative w-10 h-10 overflow-hidden bg-fuchsia-400 rounded-full dark:bg-fuchsia-400">
               <img
                 className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                src={'avatar.png'}
-                alt=""
+                src={'/avatar.png'}
+                alt="avatar"
               />
             </div>
             <button
