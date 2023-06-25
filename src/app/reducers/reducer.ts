@@ -10,7 +10,8 @@ export const initialState: TData = {
     images: [],
     about: '',
     location: '',
-  }
+  },
+  time: 0,
 };
 
 export const profileSlice = createSlice({
@@ -30,7 +31,7 @@ export const profileSlice = createSlice({
         about: '',
         location: '',
       };
-    },
+    }
   },
 });
 

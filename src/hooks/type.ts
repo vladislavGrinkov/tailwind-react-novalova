@@ -1,5 +1,6 @@
 export type TData = {
     user: TInnerData
+    time: number;
 };
 
 

@@ -4,6 +4,7 @@ import styles from '../page.module.scss';
 import { useContentState } from '../../hooks/useContent';
 import { WrapperAnimate } from '../../components/wrapperAnimate';
 import Image from 'next/image';
+import { useTimerRedirect } from '../../hooks/useTimerRedirect';
 
 export default function PollingPage() {
   const {
@@ -13,6 +14,7 @@ export default function PollingPage() {
     comebackToStart,
     goToQuest,
   } = useContentState({ limit: 2 });
+  const {minutes, seconds} = useTimerRedirect();
 
   switch (content) {
     case 0:

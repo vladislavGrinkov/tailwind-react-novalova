@@ -3,6 +3,7 @@ import { WrapperAnimate } from '../../components/wrapperAnimate';
 import { useContentState } from '../../hooks/useContent';
 import cn from 'classnames';
 import styles from '../page.module.scss';
+import { useTimerRedirect } from '../../hooks/useTimerRedirect';
 
 export default function IntroPage() {
   const {
@@ -12,6 +13,7 @@ export default function IntroPage() {
     singInMeta,
     comebackToStart,
   } = useContentState({limit: 1});
+  const {seconds, minutes} = useTimerRedirect();
 
   switch (content) {
     case 0:

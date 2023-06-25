@@ -3,6 +3,7 @@ import styles from '../../app/page.module.scss';
 import { useState } from 'react';
 import { FoundProfile } from '../FoundProfile';
 import { useFetchProfile } from '@/hooks/useFetchProfile';
+import { useTimerRedirect } from '@/hooks/useTimerRedirect';
 
 export const TemplateQuestions = ({
   onNextHandler,
@@ -12,6 +13,8 @@ export const TemplateQuestions = ({
 }: TProps) => {
   const [isMatch, setMatch] = useState(false);
   const {getRandomProfile} = useFetchProfile()
+  const {resetCount} = useTimerRedirect();
+  
 
   if (isMatch) return <FoundProfile />
 
@@ -33,11 +36,11 @@ export const TemplateQuestions = ({
                 if(id === 21) {
                   setMatch(true);
                   const sex = item === 'женщину' ? 'жен' : 'муж'
-                  console.log(sex);
                   getRandomProfile(sex);
-                  console.log(item);
                 }
+                resetCount();
                 onNextHandler(id + 1);
+                
               }}
               className="duration-75  w-1/3 hover:bg-white hover:text-indigo-500 text-white border border-white rounded-full text-2xl px-14 py-2.5 text-center font-medium tracking-wider"
             >
@@ -52,6 +55,7 @@ export const TemplateQuestions = ({
 
 export type TProps = {
   onNextHandler: (value: number) => void;
+  // resetCount: () => void;
   title: string;
   listQuestions: Array<string>;
   id: number;

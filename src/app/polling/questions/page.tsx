@@ -5,11 +5,14 @@ import styles from '../../page.module.scss';
 import { useQuests } from '../../../hooks/useQuests';
 import { useContentState } from '../../../hooks/useContent';
 import { useActions } from '../../reducers/useActions';
+import { useTimerRedirect } from '../../../hooks/useTimerRedirect';
 
 export default function QuestionsPage() {
   const { goToNextQS, state } = useQuests();
   const { setContent, comebackToStart } = useContentState({ limit: 0 });
   const {resetProfile} = useActions();
+
+
   return (
     <div className={cn(styles.wrapper)}>
       <div className=" w-full h-screen flex items-center flex-col justify-center">

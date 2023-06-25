@@ -7,6 +7,7 @@ import { useTypedSelector } from '../reducers/useTypedSelector';
 import { shallowEqual } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { TypeRootState } from '../init/store';
+import { useTimerRedirect } from '../../hooks/useTimerRedirect';
 
 export default function Second() {
   const [isOpen, setOpen] = useState(false);
@@ -17,6 +18,7 @@ export default function Second() {
     shallowEqual
   );
   const { images, age, about, location, name } = user;
+  const {minutes, seconds} = useTimerRedirect();
 
   useEffect(() => {
     if (!name) router.push('/polling/questions');
